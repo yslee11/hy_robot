@@ -2,7 +2,7 @@
   Google Apps Script 배포 URL을 아래에 붙여넣으세요.
   예: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/배포ID/exec';
 */
-const GOOGLE_SCRIPT_URL = '';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwZY5L0Ki9rgkhdXBUdO_34EgG_aZjngp_NcoQNP-xTQ8ReinI-uwgZn5qKiDyE7rE/exec';
 
 // ─── 단계 설정 ───────────────────────────────────────────────
 const TOTAL_STEPS = 6;
