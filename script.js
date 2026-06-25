@@ -2,7 +2,7 @@
   Google Apps Script 배포 URL을 아래에 붙여넣으세요.
   예: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/배포ID/exec';
 */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwZY5L0Ki9rgkhdXBUdO_34EgG_aZjngp_NcoQNP-xTQ8ReinI-uwgZn5qKiDyE7rE/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxAa64V3sWd9HQsKpWxUPNU0j8CviKYTFr-tOm8wMOGjT2RBicaUynXB_-6POxnOcFJ/exec';
 
 // ─── 단계 설정 ───────────────────────────────────────────────
 const TOTAL_STEPS = 6;
@@ -338,14 +338,13 @@ async function submitToGoogleSheet(data) {
     throw new Error('GOOGLE_SCRIPT_URL이 비어 있습니다. script.js에 Google Apps Script 웹앱 URL을 입력하세요.');
   }
 
-  const body = new URLSearchParams();
-  body.append('payload', JSON.stringify(data));
-
+  // text/plain은 브라우저가 CORS preflight를 발생시키지 않아
+  // no-cors 환경에서 가장 안정적으로 Apps Script에 데이터를 전달합니다.
   await fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-    body
+    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+    body: JSON.stringify(data)
   });
 }
 
@@ -415,3 +414,4 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
