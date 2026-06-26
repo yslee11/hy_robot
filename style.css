@@ -289,12 +289,29 @@ button:disabled { opacity: .6; cursor: wait; }
 /* ─── Mobile ─────────────────────────────────────────────────── */
 @media (max-width: 760px) {
   .grid.two, .grid.three, .robot-cards, .definitions { grid-template-columns: 1fr; }
-  .comparison-head { grid-template-columns: 1fr; text-align: left; }
-  .comparison-head .right { text-align: left; }
-  .comparison-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .comparison-scale { grid-template-columns: repeat(13, 44px); width: max-content; min-width: 620px; }
-  .scale-caption { min-width: 620px; }
-  .comparison-scale label { padding: 9px 4px; font-size: .9rem; }
+  .comparison-head {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    text-align: left;
+    font-size: 0.76rem;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .comparison-head .right { text-align: right; }
+  .comparison-head .vs {
+    font-size: 0.66rem;
+    white-space: nowrap;
+    color: var(--muted);
+  }
+  .comparison-row { overflow-x: visible; padding: 12px; }
+  .robot-criteria-group { padding: 14px; }
+  .comparison-scale {
+    grid-template-columns: repeat(13, 1fr);
+    width: 100%;
+    min-width: unset;
+    gap: 2px;
+  }
+  .scale-caption { min-width: unset; width: 100%; font-size: 0.72rem; }
+  .comparison-scale label { padding: 8px 1px; font-size: 0.76rem; border-radius: 7px; }
   .mobile-break { display: none; }
   .card, .submit-card { padding: 20px; border-radius: 18px; }
 
